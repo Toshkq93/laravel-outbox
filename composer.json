@@ -1,0 +1,87 @@
+{
+    "name": "toshkq93/laravel-outbox",
+    "description": "Reliable messaging for Laravel: transactional outbox with a SKIP LOCKED relay, inbox deduplication and Stripe-style idempotency keys for APIs.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "outbox",
+        "transactional-outbox",
+        "outbox-pattern",
+        "inbox",
+        "inbox-pattern",
+        "idempotency",
+        "idempotency-key",
+        "idempotent",
+        "exactly-once",
+        "at-least-once",
+        "deduplication",
+        "messaging",
+        "event-driven",
+        "microservices",
+        "reliability",
+        "skip-locked"
+    ],
+    "homepage": "https://github.com/toshkq93/laravel-outbox",
+    "authors": [
+        {
+            "name": "toshkq93",
+            "homepage": "https://github.com/toshkq93"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/toshkq93/laravel-outbox/issues",
+        "source": "https://github.com/toshkq93/laravel-outbox",
+        "docs": "https://github.com/toshkq93/laravel-outbox#readme"
+    },
+    "require": {
+        "php": "^8.2",
+        "illuminate/bus": "^11.0|^12.0|^13.0",
+        "illuminate/cache": "^11.0|^12.0|^13.0",
+        "illuminate/console": "^11.0|^12.0|^13.0",
+        "illuminate/database": "^11.0|^12.0|^13.0",
+        "illuminate/events": "^11.0|^12.0|^13.0",
+        "illuminate/http": "^11.0|^12.0|^13.0",
+        "illuminate/queue": "^11.0|^12.0|^13.0",
+        "illuminate/support": "^11.0|^12.0|^13.0",
+        "ramsey/uuid": "^4.7"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^9.0|^10.0|^11.0",
+        "phpunit/phpunit": "^11.0|^12.0"
+    },
+    "suggest": {
+        "ext-pcntl": "Lets outbox:relay finish its batch on SIGTERM / SIGINT / SIGQUIT instead of dying mid-publish."
+    },
+    "autoload": {
+        "psr-4": {
+            "Toshkq93\\Outbox\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Toshkq93\\Outbox\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Toshkq93\\Outbox\\OutboxServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "analyse": "phpstan analyse --memory-limit=1G",
+        "format": "pint"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "scripts-descriptions": {
+        "analyse": "Static analysis (needs: composer require --dev larastan/larastan)",
+        "format": "Code style (needs: composer require --dev laravel/pint)"
+    }
+}

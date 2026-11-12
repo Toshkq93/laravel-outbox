@@ -1,0 +1,24 @@
+# Local databases for running the suite against real servers:
+#   docker compose up -d
+#   DB_CONNECTION=pgsql DB_PORT=54329 DB_DATABASE=outbox DB_USERNAME=postgres DB_PASSWORD=secret vendor/bin/phpunit
+#   DB_CONNECTION=mysql DB_PORT=33069 DB_DATABASE=outbox DB_USERNAME=root DB_PASSWORD=secret vendor/bin/phpunit
+#   DB_CONNECTION=mariadb DB_PORT=33079 DB_DATABASE=outbox DB_USERNAME=root DB_PASSWORD=secret vendor/bin/phpunit
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: outbox
+    ports: ['54329:5432']
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: outbox
+    ports: ['33069:3306']
+  mariadb:
+    image: mariadb:11
+    environment:
+      MARIADB_ROOT_PASSWORD: secret
+      MARIADB_DATABASE: outbox
+    ports: ['33079:3306']
